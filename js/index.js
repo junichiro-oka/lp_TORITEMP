@@ -1,15 +1,27 @@
 $(function(){
+     $('.nav_list a').on('click', function (e) {
+        e.preventDefault();
+
+        const target = $(this).attr('href');
+        const headerHeight = $('header').outerHeight();
+        const targetPosition = $(target).offset().top - headerHeight;
+
+        $('html, body').animate({
+            scrollTop: targetPosition
+        }, 500);
+    });
+
     $('#menu_btn').on('change', function() {
         if ($(this).is(':checked')) {
             $('.navicon_text').addClass('fade-out');
             setTimeout(() => {
                 $('.navicon_text').text('open').removeClass('fade-out').addClass('fade-in');
-            }, 319); // 319ms後にテキスト変更
+            }, 319);
         } else {
             $('.navicon_text').addClass('fade-out');
             setTimeout(() => {
                 $('.navicon_text').text('menu').removeClass('fade-out').addClass('fade-in');
-            }, 319); // 319ms後にテキスト変更
+            }, 319);
         }
     });
 
@@ -48,4 +60,21 @@ $(function(){
     $('.nav_links a, .header_button a').on('click', function() {
         $('#menu_btn').prop('checked', false);
     });
+
+    const fixElement = document.querySelector('.fix');
+    const formElement = document.querySelector('#form');
+
+    window.addEventListener('scroll', () => {
+      const formPosition = formElement.getBoundingClientRect();
+      const isFormVisible = formPosition.top < window.innerHeight && formPosition.bottom > 0;
+
+      if (isFormVisible) {
+        fixElement.classList.add('hidden');
+      } else {
+        fixElement.classList.remove('hidden');
+      }
+    });
+
+
+
   });
