@@ -2824,4 +2824,8 @@ footer p {
     .step p {
         font-size: 17px;
     }
+
+    .fix p {
+        font-size: 13px;
+    }
 }
