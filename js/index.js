@@ -69,8 +69,10 @@ $(function(){
       const isFormVisible = formPosition.top < window.innerHeight && formPosition.bottom > 0;
 
       if (isFormVisible) {
+        // #formが画面内に見えたら消す
         fixElement.classList.add('hidden');
       } else {
+        // 画面外に出たら再度表示
         fixElement.classList.remove('hidden');
       }
     });
